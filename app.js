@@ -4,8 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const mongoose = require('mongoose');
 // Debugging the imported routers
 // console.log('Index Router Type:', typeof indexRouter); // Should log 'function'
@@ -52,13 +50,8 @@ const mongoose = require('mongoose');
     /*  connecting to mongodb end  */
 
 
-    /*     all for this is for importing the model from the routes START      */
-
-       poodf
-
-    /*     all for this is for importing the model from the routes END     */
-
-
+    
+    
 var app = express();
 
 // view engine setup
@@ -71,8 +64,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 
+
+
+
+
+
+/*     all for this is for importing the model from the routes START      */
+
+  var indexRouter = require('./routes/index');
+  var usersRouter = require('./routes/users');
+  var vediosRouter = require('./routes/vedios');
+  var commentRouter = require('./routes/comment');
+  var tweetRouter = require('./routes/tweet');
+  var likesRouter = require('./routes/like');
+  var healthCkeckRouter = require('./routes/healcheck');
+  var dashboardRouter = require('./routes/dashboard');
+  var playlistRouter = require('./routes/playlist');
+  var subscriptionsRouter = require('./routes/subscription');
+
+/*     all for this is for importing the model from the routes END     */
 
 
 
@@ -80,13 +91,29 @@ app.use('/', indexRouter);
 
 // http://localhost:3000/api/v1/users/register
 
-app.use('/api/v1/users', usersRouter);       //   this route is for getting all the user data
+  /*   declaration of routes START     */
 
-app.use('/api/v1/vedios',)
+app.use('/', healthCkeckRouter);
 
+app.use('/api/v1/users', usersRouter);        //   this route is for getting all the user data
 
+app.use('/api/v1/vedios', vediosRouter);      //   this route is for getting all the vedios data
 
+app.use('/api/v1/comment', commentRouter);    //   this route is for getting all the comment data
 
+app.use('/api/v1/tweet', tweetRouter);      //   this route is for getting all the tweet data of users
+
+app.use('/api/v1/likes', likesRouter);      //   this route is for getting all the likes data of users
+
+app.use('/api/v1/dashboard', dashboardRouter);      //   this route is for getting dashboard data of users
+
+app.use('/api/v1/playlist', playlistRouter);      //   this route is for getting playlist data of users
+
+// WE MADE THE BELOW ROUTE BUT NOT TEST TILL YET
+
+// app.use('/api/v1/subscription', subscriptionsRouter);      //   this route is for getting playlist data of users
+
+/*    declaration of routes END     */
 
 
 

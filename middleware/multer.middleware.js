@@ -14,7 +14,6 @@
 //  module.exports =  upload;
 
 
-
 const multer = require('multer');
 const path = require('path');
 
@@ -26,7 +25,6 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
-
 const upload = multer({ storage });
 
 module.exports = upload;

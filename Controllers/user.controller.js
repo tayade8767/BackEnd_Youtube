@@ -1,5 +1,5 @@
 
-    const asyncHandler = require('../Utils/asyncHnadler');
+const asyncHandler = require('../Utils/asyncHnadler');
 
 const ApiError = require('../Utils/ApiError');
 const User = require("../models/user.model");
@@ -144,7 +144,8 @@ const loginUser = asyncHandler(async (req,res) => {
 
      /*      ALGORITHM   ENDS OF CHAIAURCODE    */
 
-     console.log(req.body)
+    //  console.log(req.body)
+    console.log(req);
 
      const { username, email,password } = req.body;
 
